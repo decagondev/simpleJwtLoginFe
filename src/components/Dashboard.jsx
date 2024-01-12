@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const Login = () => {
+const Dashboard = () => {
   const [welcome, setWelcome] = useState(null);
   const [error, setError] = useState("");
 
@@ -15,10 +15,11 @@ const Login = () => {
       let token = localStorage.getItem('jwtToken');
       console.log("token", token);
 
-      const response = await axios.get('http://localhost:3555/dashboard', { headers : {
+      const response = await axios.get('api/users/dash', { headers : {
         Authorization: "Bearer " + token }});
 
-      setWelcome(response.data);
+      setWelcome(response.data.email);
+      console.log(response.data);
     } catch (err) {
       setError('error');
       console.error(err);
@@ -27,9 +28,9 @@ const Login = () => {
 
   return (
     <div>
-      <h2>{welcome?.message}</h2>       
+      <h2>Welcome {welcome}</h2>       
     </div>
   );
 };
 
-export default Login;
+export default Dashboard;
