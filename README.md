@@ -22,3 +22,5 @@ npm install
 npm run dev
 ```
 
+**I am going to add some testing in to this at some point soon**
+
