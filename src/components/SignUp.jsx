@@ -64,7 +64,7 @@ const SignUp = () => {
         />
       </div>
       {error && <div style={{ color: 'red' }}>{error}</div>}
-      <button onClick={handleLogin}>Login</button>
+      <button onClick={handleLogin}>Sign Up</button>
     </div>
   );
 };
