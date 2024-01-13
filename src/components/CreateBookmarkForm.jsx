@@ -6,17 +6,16 @@ const CreateBookmarkForm = () => {
     const [description, setDescription] = useState("");
     const [link, setLink] = useState("");
     const [error, setError] = useState("");
+
     const handleCreatBookmark = async () => {
         try {
           let token = localStorage.getItem('jwtToken');
-          console.log("token", token);
+          const data = { link, title, description };
     
-          const response = await axios.post('api/bookmarks', { headers : { Authorization: "Bearer " + token }});
-    
-          console.log(response.data);
+          const response = await axios.post('api/bookmarks', data, { headers: { Authorization: "Bearer " + token }});
+          window.location.href = "/dashboard";
         } catch (err) {
           setError('error');
-          console.error(err);
         }
       };
 

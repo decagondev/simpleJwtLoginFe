@@ -9,8 +9,7 @@ const Bookmarks = () => {
           let token = localStorage.getItem('jwtToken');
           console.log("token", token);
     
-          const response = await axios.get('api/bookmarks', { headers : {
-            Authorization: "Bearer " + token }});
+          const response = await axios.get('api/bookmarks', { headers: { Authorization: "Bearer " + token }});
     
           setBookmarks(response.data);
           console.log("current bookmarks:", response.data);
@@ -27,7 +26,7 @@ const Bookmarks = () => {
     return (
         <div>
             <h1>Bookmarks</h1>
-            {bookmarks?.map((bookmark) => <h3 key={bookmerk.id}>{bookmark.title}</h3>)}
+            {bookmarks?.map((bookmark) => <h3 key={bookmark.id}><a href={bookmark.link} target="_BLANK">{bookmark.title}</a></h3>)}
         </div>
     );
 }

@@ -31,7 +31,7 @@ const Dashboard = () => {
   return (
     <div>
       <h2>Welcome {user?.email}</h2>  
-      {/* <CreateBookmarkForm /> */}
+      <CreateBookmarkForm />
       <Bookmarks />     
     </div>
   );
