@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Bookmarks from './Bookmarks';
+import CreateBookmarkForm from './CreateBookmarkForm';
 
 const Dashboard = () => {
-  const [welcome, setWelcome] = useState(null);
+  const [user, setUser] = useState(null);
   const [error, setError] = useState("");
 
   useEffect(() => {
@@ -18,7 +20,7 @@ const Dashboard = () => {
       const response = await axios.get('api/users/dash', { headers : {
         Authorization: "Bearer " + token }});
 
-      setWelcome(response.data.email);
+      setUser(response.data);
       console.log(response.data);
     } catch (err) {
       setError('error');
@@ -28,7 +30,9 @@ const Dashboard = () => {
 
   return (
     <div>
-      <h2>Welcome {welcome}</h2>       
+      <h2>Welcome {user?.email}</h2>  
+      {/* <CreateBookmarkForm /> */}
+      <Bookmarks />     
     </div>
   );
 };
